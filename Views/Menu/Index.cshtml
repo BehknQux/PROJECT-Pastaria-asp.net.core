@@ -1,0 +1,48 @@
+﻿@model IEnumerable<MenuItem>
+
+<div class="banner">
+    <h1 style="font-family: 'Sue Ellen Francisco', cursive !important; font-weight: bold; letter-spacing: 0.5rem;">
+        MENU</h1>
+    <img class="banner-image" src="images/pasta.jpg" alt="">
+</div>
+<div class="description">
+    <h1 class="text-center menu-dh">Discover Pasta Paradise</h1>
+    <p class="text-center zaxd">Prepares to be dazzled as you journey through our sensational pasta menu,<br> where
+        each dish is a masterpiece crafted to ignite your taste buds and transport you to culinary bliss.</p>
+</div>
+<div class="d-flex justify-content-center mb-5">
+    <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+            Select Operation
+        </button>
+        <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="/Menu/AddToMenu">Add an item to menu</a></li>
+        </ul>
+    </div>
+</div>
+<div class="menu-container">
+    @foreach(MenuItem item in Model)
+    {
+        <div class="menu-item-container">
+            <img class="pasta-image" src="@item.ImageUrl" alt="@item.ImageUrl">
+            <div class="main-icon-container">
+                @* <button class="border-0 icon-container favourite"><i class="fa-regular fa-heart"></i></button> *@
+                <form asp-controller="Menu" asp-action="AddToCart">
+                    <input type="hidden" name="id" value="@item.Id">
+                    <button type="submit" class="border-0 icon-container cart-icon"><i class="fa-solid fa-cart-plus"></i></button>
+                </form>
+            </div>
+            <div class="d-flex justify-content-center"><span class="food-name">@item.Name</span></div>
+            <form asp-controller="Menu" asp-action="Delete"> 
+                <input type="hidden" name="id" value="@item.Id">
+                <button type="submit" class="btn btn-danger menu-item-delete"><i class="fas fa-trash-alt"></i></button>
+            </form>
+            <div class="menu-item-bottom-container d-flex justify-content-evenly">
+                <div class="food-price">@item.Price TL</div>
+                <div class="rating text-warning"><i class="fa-solid fa-star"></i>@item.Rating</div>
+            </div>
+        </div>
+    }
+</div>
+
+<script></script>

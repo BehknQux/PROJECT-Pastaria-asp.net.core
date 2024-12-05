@@ -1,0 +1,233 @@
+﻿@model IEnumerable<Cart>
+
+<h1 class="text-center my-5">ORDER</h1>
+    <div class="d-flex px-5 my-5">
+        <div class="order-large mx-4">
+            <div class="large-1 d-flex align-items-center justify-content-center p-4">
+                <div class="stage-circle d-flex align-items-center justify-content-center fs-3 yellow"><i
+                        class="fa-solid fa-user"></i></div>
+                <div class="stage-line yellow"></div>
+                <div class="stage-circle d-flex align-items-center justify-content-center fs-3 yellow"><i
+                        class="fa-solid fa-location-pin"></i></div>
+                <div class="stage-line"></div>
+                <div class="stage-circle d-flex align-items-center justify-content-center fs-3"><i
+                        class="fa-regular fa-credit-card"></i></div>
+                <div class="stage-line"></div>
+                <div class="stage-circle d-flex align-items-center justify-content-center fs-3"><i
+                        class="fa-solid fa-circle-check"></i></div>
+            </div>
+            <div class="large-2 d-flex flex-column justify-content-center p-4 pb-5 my-4">
+                <div class="fs-2 fw-bold mx-5">Select Saved Address</div>
+                <small class="mx-5">You’ve add some address before, You can select one of below.</small>
+                <div class="d-flex justify-content-center flex-wrap">
+                    <div class="adress-card mt-4">
+                        <div class="adress-header d-flex justify-content-between px-3 py-2">
+                            <div class="text-warning">
+                                <i class="fa-solid fa-house"></i> Home
+                            </div>
+                            <button class="btn bg-warning text-dark">Edit</button>
+                        </div>
+                        <div class="p-3">
+                            93, Songbird Cir, Blackville, South
+                            <br>
+                            Carolina, USA-29817
+                            <br>
+                            +33 (907) 555-0101
+                            <div class="mt-4">
+                                <button class="btn text-dark bg-light">Deliver Here</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adress-card mt-4">
+                        <div class="adress-header d-flex justify-content-between px-3 py-2">
+                            <div class="text-warning">
+                                <i class="fa-solid fa-briefcase"></i> Office
+                            </div>
+                            <button class="btn bg-warning text-dark">Edit</button>
+                        </div>
+                        <div class="p-3">
+                            3th St, matrail Cir, Vitactall Beige, New
+                            <br>
+                            York, USA-10011
+                            <br>
+                            +33 (907) 555-1235
+                            <div class="mt-4">
+                                <button class="btn text-dark bg-light">Deliver Here</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adress-card mt-4">
+                        <div class="adress-header d-flex justify-content-between px-3 py-2">
+                            <div class="text-warning">
+                                <i class="fa-solid fa-user-ninja"></i> Eda Nur Özpınar
+                            </div>
+                            <button class="btn bg-warning text-dark">Edit</button>
+                        </div>
+                        <div class="p-3">
+                            703, W 156th st, Cross Road, Elizabeth
+                            <br>
+                            Barcus Way, USA-95540
+                            <br>
+                            +33 (907) 555-3456
+                            <div class="mt-4">
+                                <button class="btn text-dark bg-light">Deliver Here</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="adress-card mt-4 d-flex justify-content-center align-items-center">
+                        <button class="btn btn-outline-light">Add new adress</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="order-small mx-4 d-flex flex-column justify-content-between" style="height: 50rem">
+            <div style="height: 50%" class="overflow-auto">
+                @foreach (Cart c in Model)
+                {
+                    <div class="list-item border-bottom m-4">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <img src="@c.MenuItem.ImageUrl" style="height: 5rem; width: 5rem" alt="">
+                                <div style="font-size: 1.1rem;" class="fw-bold ms-3">@c.MenuItem.Name</div>
+                            </div>
+                            <div class="fw-bold text-warning">$@c.MenuItem.Price</div>
+                        </div>
+                        @* <small>- Coca-Cola 250 ml</small> *@
+                        <ul class="my-3">
+                            @* <li>Serve 1</li> *@
+                        </ul>
+                    </div>
+                }
+            </div>
+            <div style="height: 50%" class="mx-4">
+                <h2 class="text-center">Big details</h2>
+                <div class="d-flex justify-content-between">
+                    <div>Sub Total</div>
+                    <div class="text-warning">$@(Model.Sum(item => item.MenuItem.Price).ToString("F1"))</div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>Delivery Charge (2 kms)</div>
+                    <div class="text-success">Free</div>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <div>Discount (10%)</div>
+                    <div class="text-warning">$@((Model.Sum(item => item.MenuItem.Price) * .1).ToString("F1"))</div>
+                </div>
+                <hr>
+                <div class="d-flex justify-content-between">
+                    <div>To Pay</div>
+                    <div class="text-warning">$@((Model.Sum(item => item.MenuItem.Price) * .9).ToString("F1"))</div>
+                </div>
+                <div class="form-check mt-4">
+                    <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                    <label style="font-size: 0.8rem; opacity: 50%;" class="form-check-label" for="flexCheckDefault">
+                        I have read and agree to the terms and conditions.
+                    </label>
+                </div>
+                <button class="btn btn-success mt-1 w-100" data-bs-toggle="modal"
+                        data-bs-target="#exampleModal">CHECKOUT</button>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content bg-dark">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-8 text-primary">Give us Feedback!</div>
+                        <div class="d-flex col-4">
+                            <div><i class="fa-solid fa-thumbs-up text-success"></i></div>
+                            <div style="margin: 0 1rem;"><i class="fa-solid fa-hand-lizard text-warning"></i></div>
+                            <div><i class="fa-solid fa-thumbs-down text-danger"></i></div>
+                        </div>
+                    </div>
+                    <form class="my-3" action="">
+                        <div class="row">
+                            <small class="col-8">Do you like your website design?
+                            </small>
+                            <div class="col-4 d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                </div>
+                                <div style="margin: 0 0.4rem;" class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="my-3" action="">
+                        <div class="row align-items-center">
+                            <small class="col-8">Can you easily find the information you are looking for on the website?
+                            </small>
+                            <div class="col-4 d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                </div>
+                                <div style="margin: 0 0.4rem;" class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="my-3" action="">
+                        <div class="row align-items-center">
+                            <small class="col-8">Is the menu and price information on the website sufficient for you?
+                            </small>
+                            <div class="col-4 d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                </div>
+                                <div style="margin: 0 0.4rem;" class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                    <form class="my-3" action="">
+                        <div class="row align-items-center">
+                            <small class="col-8">Would you consider visiting the website again?
+                            </small>
+                            <div class="col-4 d-flex">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault1">
+                                </div>
+                                <div style="margin: 0 0.4rem;" class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault2">
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="flexRadioDefault"
+                                        id="flexRadioDefault3">
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-primary w-100">Save</button>
+                </div>
+            </div>
+        </div>
+    </div>
