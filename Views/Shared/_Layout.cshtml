@@ -22,7 +22,7 @@
         <div class="category"><a class="navbar-button" href="/menu">MENU</a></div>
         <div class="category"><a class="navbar-button" href="/aboutus">ABOUT US</a></div>
     </div>
-    <div class="cart d-flex align-items-center">
+    <div class="cart d-flex align-items-start">
         <div><i class="fa-solid fa-circle-user"></i> Hülya Cengiz</div>
         <div style="margin: 0 1rem;">|</div>
         <div class="position-relative">
@@ -33,11 +33,13 @@
                 </button>
                 <ul class="dropdown-menu">
                     <li><a class="dropdown-item" href="/order">Go to order page</a></li>
+                    <li><a class="dropdown-item" href="@Url.Action("Logout","Login")">Log Out</a></li>
                 </ul>
+               
             </div>
         </div>
     </div>
-</div> 
+</div>
 @RenderBody()
 <div class="footer">
     <div class="main-informations-container">

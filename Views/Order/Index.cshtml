@@ -1,20 +1,21 @@
 ﻿@model IEnumerable<Cart>
 
 <h1 class="text-center my-5">ORDER</h1>
-    <div class="d-flex px-5 my-5">
+    <div class="d-flex justify-content-center px-5 my-5">
+        @Model.Count()
         <div class="order-large mx-4">
             <div class="large-1 d-flex align-items-center justify-content-center p-4">
                 <div class="stage-circle d-flex align-items-center justify-content-center fs-3 yellow"><i
-                        class="fa-solid fa-user"></i></div>
+                                                                                                           class="fa-solid fa-user"></i></div>
                 <div class="stage-line yellow"></div>
                 <div class="stage-circle d-flex align-items-center justify-content-center fs-3 yellow"><i
-                        class="fa-solid fa-location-pin"></i></div>
+                                                                                                           class="fa-solid fa-location-pin"></i></div>
                 <div class="stage-line"></div>
                 <div class="stage-circle d-flex align-items-center justify-content-center fs-3"><i
-                        class="fa-regular fa-credit-card"></i></div>
+                                                                                                    class="fa-regular fa-credit-card"></i></div>
                 <div class="stage-line"></div>
                 <div class="stage-circle d-flex align-items-center justify-content-center fs-3"><i
-                        class="fa-solid fa-circle-check"></i></div>
+                                                                                                    class="fa-solid fa-circle-check"></i></div>
             </div>
             <div class="large-2 d-flex flex-column justify-content-center p-4 pb-5 my-4">
                 <div class="fs-2 fw-bold mx-5">Select Saved Address</div>
@@ -80,9 +81,12 @@
                 </div>
             </div>
         </div>
-        <div class="order-small mx-4 d-flex flex-column justify-content-between" style="height: 50rem">
+        @{
+            if (@Model.Count() != 0)
+            {
+                <div class="order-small mx-4 d-flex flex-column justify-content-between" style="height: 50rem">
             <div style="height: 50%" class="overflow-auto">
-                @foreach (Cart c in Model)
+                @foreach (var c in Model)
                 {
                     <div class="list-item border-bottom m-4">
                         <div class="d-flex justify-content-between align-items-center">
@@ -128,7 +132,9 @@
                         data-bs-target="#exampleModal">CHECKOUT</button>
             </div>
         </div>
-    </div>
+            }
+        }
+        </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content bg-dark">

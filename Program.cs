@@ -1,8 +1,18 @@
 using Microsoft.EntityFrameworkCore;
+using MvcWebAppProject.Middlewares;
 using MvcWebAppProject.Models;
+using static System.TimeSpan;
 
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Add session services
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = FromMinutes(30); // Session süresi
+    options.Cookie.HttpOnly = true; // Cookie sadece HTTP üzerinden erişilebilir
+    options.Cookie.IsEssential = true; // GDPR uyumluluğu için gereklidir
+});
 
 builder.Logging.ClearProviders();  // Varsayılan sağlayıcıları temizler
 builder.Logging.AddConsole();     // Konsola log yazmayı etkinleştirir
@@ -34,9 +44,9 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 app.UseStaticFiles();
-
 app.UseRouting();
-
+app.UseSession();
+app.UseMiddleware<SessionMiddleware>();
 app.UseAuthorization();
 
 app.MapControllerRoute(

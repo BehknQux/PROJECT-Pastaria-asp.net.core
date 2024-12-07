@@ -13,7 +13,6 @@
         "packagesPath": "C:\\Users\\Ahmet Hamza Tok\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\obj\\",
         "projectStyle": "PackageReference",
-        "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
           "C:\\Users\\Ahmet Hamza Tok\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
