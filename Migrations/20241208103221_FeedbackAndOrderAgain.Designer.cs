@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using MvcWebAppProject.Models;
 
@@ -10,9 +11,11 @@ using MvcWebAppProject.Models;
 namespace MvcWebAppProject.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241208103221_FeedbackAndOrderAgain")]
+    partial class FeedbackAndOrderAgain
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "9.0.0");
@@ -34,6 +37,24 @@ namespace MvcWebAppProject.Migrations
                     b.HasIndex("ItemId");
 
                     b.ToTable("Cart");
+                });
+
+            modelBuilder.Entity("MvcWebAppProject.Models.Feedback", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("INTEGER");
+
+                    b.Property<string>("Survey")
+                        .IsRequired()
+                        .HasColumnType("TEXT");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("INTEGER");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Feedbacks");
                 });
 
             modelBuilder.Entity("MvcWebAppProject.Models.MenuItem", b =>

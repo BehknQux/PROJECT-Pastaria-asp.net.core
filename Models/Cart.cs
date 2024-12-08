@@ -5,17 +5,14 @@ namespace MvcWebAppProject.Models;
 
 public class Cart
 {
-    public Cart(int id)
-    {
-        this.ItemId = id;
-    }
-    
     [Key]
     public int Id { get; set; }
     
-    [Required]
     [ForeignKey("MenuItem")]
     public int ItemId { get; set; }
     
-    public MenuItem MenuItem { get; set; }
+    public virtual MenuItem? MenuItem { get; set; }
+    
+    [Required]
+    public int UserId { get; set; }
 }

@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using MvcWebAppProject.Helpers;
 using MvcWebAppProject.Middlewares;
 using MvcWebAppProject.Models;
 using static System.TimeSpan;
@@ -22,7 +23,9 @@ builder.Logging.AddDebug();       // Debug penceresine log yazmayı etkinleştir
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
-// Add services to the container.
+// Session ve HttpContextAccessor servisini ekle
+builder.Services.AddSession();
+builder.Services.AddHttpContextAccessor();
 builder.Services.AddControllersWithViews();
 
 var app = builder.Build();
@@ -45,6 +48,9 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
+
+SessionHelper.Configure(app.Services.GetRequiredService<IHttpContextAccessor>());
+
 app.UseSession();
 app.UseMiddleware<SessionMiddleware>();
 app.UseAuthorization();

@@ -6,8 +6,8 @@ namespace MvcWebAppProject.Controllers;
 
 public class MenuController : Controller
 {
-    private readonly ApplicationDbContext _context;
     private readonly ILogger<MenuController> _logger;
+    private readonly ApplicationDbContext _context;
     
     public MenuController(ILogger<MenuController> logger, ApplicationDbContext context)
     {
@@ -40,7 +40,7 @@ public class MenuController : Controller
     public async Task<ActionResult> Delete(int id)
     {
         var item = await _context.MenuItems.FindAsync(id);
-        _context.MenuItems.Remove(item);
+        if (item != null) _context.MenuItems.Remove(item);
         await _context.SaveChangesAsync();
         return RedirectToAction("Index");
     }
@@ -48,9 +48,15 @@ public class MenuController : Controller
     [HttpPost]
     public async Task<ActionResult> AddToCart(int id)
     {
-        Cart cart = new Cart(id);
+        int? userId = HttpContext.Session.GetInt32("userID");
+        
+        Cart cart = new Cart();
+        cart.ItemId = id;
+        cart.UserId = (int)userId!;
+        
         _context.Cart.Add(cart);
         await _context.SaveChangesAsync();
+        
         return RedirectToAction("Index");
     }
 }

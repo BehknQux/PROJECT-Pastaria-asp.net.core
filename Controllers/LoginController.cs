@@ -1,7 +1,8 @@
-﻿using System.Security.Cryptography;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Security.Cryptography;
 using System.Text;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
+using MvcWebAppProject.Helpers;
 using MvcWebAppProject.Models;
 
 namespace MvcWebAppProject.Controllers;
@@ -10,7 +11,6 @@ public class LoginController: Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly ILogger<LoginController> _logger;
-
     
     public LoginController(ApplicationDbContext context, ILogger<LoginController> logger)
     { 
@@ -30,11 +30,11 @@ public class LoginController: Controller
     }
 
     [HttpPost]
-    public IActionResult RegisterUser(string username, string PasswordHash)
+    public IActionResult RegisterUser(string username, string passwordHash)
     {
         var user = new User();
         user.Username = username;
-        user.PasswordHash = HashPassWord(PasswordHash);
+        user.PasswordHash = HashHelper.HashPassword(passwordHash);
 
         _context.Users.Add(user);
         _context.SaveChanges();
@@ -44,12 +44,14 @@ public class LoginController: Controller
 
     public IActionResult LoginUser(User user)
     {
-        var hashedPassword = HashPassWord(user.PasswordHash);
+        var hashedPassword = HashHelper.HashPassword(user.PasswordHash);
         var foundUser = _context.Users.FirstOrDefault(u => u.Username == user.Username && u.PasswordHash == hashedPassword);
         
         if (foundUser != null)
         {
             HttpContext.Session.SetString("username", foundUser.Username);
+            HttpContext.Session.SetInt32("userID", foundUser.Id);
+            Console.WriteLine(foundUser.Id + " Giriş Yaptı");
             return RedirectToAction("Index", "Home");
         }
         else
@@ -62,14 +64,5 @@ public class LoginController: Controller
     {
         HttpContext.Session.Clear();
         return RedirectToAction("Index");
-    }
-
-    private string HashPassWord(string password)
-    {
-        using (var sha256 = SHA256.Create())
-        {
-            var hashedBytes = sha256.ComputeHash(Encoding.UTF8.GetBytes(password));
-            return Convert.ToBase64String(hashedBytes);
-        }
     }
 }
