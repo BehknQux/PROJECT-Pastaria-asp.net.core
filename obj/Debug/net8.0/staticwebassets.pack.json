@@ -9,6 +9,34 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\images\\account.png",
+      "PackagePath": "staticwebassets\\images\\account.png"
+    },
+    {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\images\\homepagecontent1.png",
+      "PackagePath": "staticwebassets\\images\\homepagecontent1.png"
+    },
+    {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\images\\pasta-isolated-on-a-transparent-background-png.webp",
+      "PackagePath": "staticwebassets\\images\\pasta-isolated-on-a-transparent-background-png.webp"
+    },
+    {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\images\\pasta.jpg",
+      "PackagePath": "staticwebassets\\images\\pasta.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\images\\pastaslider2.jpg",
+      "PackagePath": "staticwebassets\\images\\pastaslider2.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\images\\pastaslider3.jpg",
+      "PackagePath": "staticwebassets\\images\\pastaslider3.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\images\\pngpasta.png",
+      "PackagePath": "staticwebassets\\images\\pngpasta.png"
+    },
+    {
       "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -239,6 +267,10 @@
     {
       "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "C:\\Users\\Ahmet Hamza Tok\\RiderProjects\\MvcWebAppProject\\MvcWebAppProject\\PROJECT-Pastaria-asp.net.core\\wwwroot\\logo.png",
+      "PackagePath": "staticwebassets\\logo.png"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MvcWebAppProject.Microsoft.AspNetCore.StaticWebAssets.props",

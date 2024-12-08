@@ -17,9 +17,14 @@ body {
   width: 10px; /* Kaydırma çubuğunun genişliği */
 }
 
+::selection {
+  background-color: var(--h_dark);
+  color: var(--h_darker);
+}
+
 /* Kaydırma çubuğunun arka plan rengi */
 ::-webkit-scrollbar-track {
-  background: #000000;
+  background: var(--h_darker);
 }
 
 /* Kaydırma çubuğunun dolgu rengi */
@@ -332,8 +337,10 @@ body {
   opacity: 50%;
 }
 .pasta-image{
+  height: 100%;
   width: 100%;
 }
+
 .about-us-container{
   display: flex;
   align-items: center;

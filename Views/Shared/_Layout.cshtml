@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Mvc.TagHelpers
+@using MvcWebAppProject.Helpers
+@{
+    var username = SessionHelper.GetUsername();
+}
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -16,14 +22,14 @@
 </head>
 <body>
 <div class="nav-bar">
-    @* <div class="logo"><img class="website-logo" src="logo.png" alt=""> PASTARIA</div> *@
+    <div class="logo"><img class="website-logo" src="logo.png" alt=""> PASTARIA</div>
     <div class="categories">
         <div class="category"><a class="navbar-button" href="/">HOME</a></div>
         <div class="category"><a class="navbar-button" href="/menu">MENU</a></div>
         <div class="category"><a class="navbar-button" href="/aboutus">ABOUT US</a></div>
     </div>
     <div class="cart d-flex align-items-start">
-        <div><i class="fa-solid fa-circle-user"></i> Hülya Cengiz</div>
+        <div><i class="fa-solid fa-circle-user"></i> @username</div>
         <div style="margin: 0 1rem;">|</div>
         <div class="position-relative">
             <div class="text-light" style="cursor: pointer"></div>
@@ -47,7 +53,7 @@
             #SavorTheMoment #WarmDelights #PastaPassion #MealTime #PalatePleasures</div>
         <div class="main footer-logo"><img class="footer-logo" src="logo.png" alt=""></div>
         <div class="main contact">
-            <div class="telephone-number">+90 552 513 60 54</div>
+            <div class="telephone-number">+90 541 533 87 04</div>
             <div class="e-mail">example@example.com</div>
             <br>
             <div>Send Feedback Us!</div>
